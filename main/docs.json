@@ -1,29 +1,218 @@
 [
   {
-    "name": "使用说明",
+    "name": "快速入门",
     "items": [
       {
-        "title": "快速开始",
-        "content": "欢迎使用 Aiguru Container Control Panel（ACCP）。本应用用于管理 Apple Container 环境，支持容器、镜像、网络、卷的完整生命周期操作。\n\n首次使用建议：\n1. 点击“系统”标签，启动容器服务（需要管理员权限）。\n2. 在“镜像”标签中拉取需要的镜像（如 nginx）。\n3. 在“容器”标签中创建并运行容器。\n4. 所有操作均可通过状态栏菜单快速访问。"
+        "title": "下载与安装",
+        "content": "### 系统要求\n- macOS 26 (Tahoe) 或更高版本\n- Apple Silicon (M1/M2/M3) 或 Intel 处理器\n- 至少 4GB 可用内存\n\n### 安装步骤\n1. 从 GitHub Releases 下载最新安装包：\n   ```bash\n   curl -LO https://github.com/apple/container/releases/download/1.0.0/container-1.0.0-installer-signed.pkg\n   sudo installer -pkg container-1.0.0-installer-signed.pkg -target /\n   ```\n2. 启动 Apple Container 服务：\n   ```bash\n   container system start\n   ```\n3. 下载并运行 Aiguru Container Control Panel（ACCP）应用。\n\n### 首次启动\n- 应用启动后，点击左侧“系统”标签，确认服务状态为“运行中”。\n- 如需配置镜像加速器，请前往“镜像源”标签添加国内镜像源（如 docker.1ms.run）。"
+      },
+      {
+        "title": "应用概览",
+        "content": "ACCP 是一个 Apple Container 图形化管理工具，提供以下核心功能：\n\n- **容器管理**：创建、启动、停止、删除、编辑、日志查看、终端连接、统计监控、文件复制\n- **镜像管理**：拉取、删除、构建、导出/导入、打标签、推送、登录/登出仓库\n- **网络管理**：创建、删除、查看详情（含 JSON）\n- **卷管理**：创建、删除、清理、查看详情\n- **备份管理**：自动备份、恢复、删除\n- **系统管理**：服务控制、DNS 配置、系统信息\n- **日志查看**：操作日志、系统状态、容器日志、macOS 系统日志\n- **镜像源管理**：多镜像源增删改、连通性测试、远程同步\n- **文档中心**：动态加载在线文档（即本文档）\n- **状态栏菜单**：快速访问常用功能"
       }
     ]
   },
   {
-    "name": "操作手册",
+    "name": "操作大全",
     "items": [
       {
-        "title": "创建容器",
-        "content": "1. 在“容器”标签点击“+”按钮，或从状态栏菜单选择“创建容器”。\n2. 填写容器名称、选择镜像（可从本地选择或手动输入）。\n3. 配置端口映射、环境变量、数据卷挂载等高级选项。\n4. 点击“运行”即可创建。\n\n高级选项支持网络、DNS、资源限制、Linux Capabilities 等配置。"
+        "title": "容器管理",
+        "content": "### 创建容器\n1. 点击“容器”标签的“+”按钮或状态栏菜单“创建容器”。\n2. 填写容器名称（可选），选择镜像（可从本地选择或手动输入）。\n3. 配置端口映射、环境变量、数据卷挂载等。\n4. 展开“高级设置”可配置网络、DNS、资源限制、Linux Capabilities 等。\n5. 点击“运行”创建容器。\n\n### 管理容器\n- **启动/停止/删除**：在容器详情页点击对应按钮。\n- **强制停止**：当容器无响应时，使用“强制停止”按钮（需确认）。\n- **查看日志**：点击“查看日志”弹出独立窗口，支持复制。\n- **终端连接**：点击“管理”打开系统终端，自动进入容器 Shell。\n- **统计监控**：点击“统计”查看 CPU、内存、网络 I/O 等实时数据。\n- **文件复制**：点击“复制文件”选择本地文件，指定容器内目标路径。\n- **编辑容器**：修改镜像标签、环境变量、卷挂载等（会重建容器）。\n\n### 容器列表\n- 支持按名称、镜像、IP、状态搜索。\n- 右键菜单可快速复制容器 ID。"
+      },
+      {
+        "title": "镜像管理",
+        "content": "### 拉取镜像\n1. 点击“镜像”标签的“拉取镜像”按钮。\n2. 输入仓库名称（如 nginx）和标签（如 latest）。\n3. 如果配置了镜像源，自动添加加速前缀。\n\n### 管理镜像\n- **删除**：选中镜像，点击“删除”按钮（需确认）。\n- **构建**：从 Dockerfile 构建镜像（需指定标签和路径）。\n- **导出为 tar**：保存镜像为 tar 文件。\n- **导入 tar**：从 tar 文件加载镜像。\n- **打标签**：为镜像添加新标签。\n- **推送**：将镜像推送到远程仓库（需先登录）。\n\n### 镜像仓库登录/登出\n- 点击工具栏“登录”按钮，输入服务器地址（如 docker.io）、用户名和密码。\n- 登出时确认即可。\n\n### 镜像列表\n- 支持按仓库、标签、ID 搜索。\n- 显示大小、架构等信息。"
+      },
+      {
+        "title": "网络管理",
+        "content": "### 创建网络\n1. 点击“网络”标签的“+”按钮。\n2. 输入网络名称，可设置子网（如 192.168.100.0/24）和内部模式。\n3. 点击“创建”。\n\n### 管理网络\n- **删除**：选中网络，点击“删除”按钮（需确认，默认网络不可删）。\n- **查看详情**：点击“详情”在右侧显示网络信息，包括 JSON 原始数据。\n- **搜索**：支持按网络名称搜索。"
+      },
+      {
+        "title": "卷管理",
+        "content": "### 创建卷\n1. 点击“卷管理”标签的“+”按钮。\n2. 输入卷名称，可设置大小（如 10G）。\n3. 点击“创建”。\n\n### 管理卷\n- **删除**：选中卷，点击“删除”按钮（需确认）。\n- **查看详情**：点击“详情”在右侧显示卷信息，包括源路径、大小、标签等。\n- **清理未使用卷**：一键删除所有未挂载的卷。\n- **搜索**：支持按卷名称搜索。"
+      },
+      {
+        "title": "备份管理",
+        "content": "### 自动备份\n- 编辑容器时自动备份旧容器（文件系统 + 配置）到 `~/Library/Application Support/Aiguru Container/Backups/`。\n\n### 管理备份\n- **查看**：在“备份管理”标签中列出所有备份，显示日期和大小。\n- **恢复**：右键或点击“恢复”按钮，输入新容器名称（可选），自动导入并创建容器。\n- **删除**：右键或点击“删除”按钮（需确认）。\n- **搜索**：支持按备份名称搜索。"
+      },
+      {
+        "title": "系统管理",
+        "content": "### 服务控制\n- 启动/停止/刷新 Apple Container 服务。\n- 显示服务状态和版本。\n\n### DNS 配置\n- 添加域名：输入域名（如 test），需管理员密码。\n- 删除域名：点击域名旁的减号（需确认，保留“DOMAIN”条目）。\n- 注入搜索域：添加 DNS 后，可选择注入到所有运行中的容器，使其可通过 `<容器名>.<域名>` 访问。\n\n### 系统信息\n- 右侧详情栏显示系统路径信息（安装目录、容器数据、卷、镜像、备份、配置文件等），支持复制和 Finder 打开。"
+      },
+      {
+        "title": "镜像源管理",
+        "content": "### 添加镜像源\n1. 点击“镜像源”标签的“+”按钮。\n2. 选择预设镜像源（如轩辕镜像、毫秒镜像等）或手动输入名称和地址。\n3. 点击“添加”。\n\n### 管理镜像源\n- **设为当前**：点击“设为当前”作为默认镜像源，拉取镜像时自动添加前缀。\n- **测试连通性**：点击“测试”检查镜像源是否可访问。\n- **编辑/删除**：修改名称或地址，或删除镜像源。\n- **同步 Docker 配置**：开关决定是否将镜像源写入 `~/.docker/daemon.json`。\n- **常用镜像源 URL**：可自定义远程 JSON 列表地址，点击刷新加载。"
+      },
+      {
+        "title": "日志查看",
+        "content": "### 操作日志\n- 记录所有用户操作（创建容器、拉取镜像等），支持类型、状态过滤和搜索。\n- 右键可复制单条日志，点击“清空日志”清空所有（需确认）。\n\n### 系统状态\n- 显示 `container system status` 输出，反映服务运行状态。\n\n### 容器日志\n- 显示所有容器（包括已停止）的日志，按容器分组，并标注运行状态。\n\n### macOS 系统日志\n- 显示宿主机的系统日志（`log show --last 10s --style syslog`），帮助排查系统问题。"
+      },
+      {
+        "title": "状态栏菜单",
+        "content": "点击菜单栏的 ACCP 图标，弹出控制面板：\n- **系统状态**：显示服务运行状态、容器数、镜像数。\n- **启动/停止服务**：快速控制 Apple Container 服务。\n- **创建容器/网络/卷**：快速打开创建表单。\n- **查看容器/镜像**：快速跳转到对应标签。\n- **查看日志**：跳转到日志标签。\n- **刷新状态**：手动刷新数据。\n- **退出应用**：退出 ACCP。"
       }
     ]
   },
   {
-    "name": "官方文档",
+    "name": "命令行参考",
     "items": [
       {
-        "title": "Apple Container GitHub",
-        "content": "https://github.com/apple/container",
-        "isLink": true
+        "title": "容器管理命令",
+        "content": "```\ncontainer list [--all] [--format json]\ncontainer start <id>\ncontainer stop <id>\ncontainer delete <id> [--force]\ncontainer logs <id>\ncontainer exec -it <id> sh\ncontainer create [options] <image>\ncontainer kill <id>\ncontainer export --output <path> <id>\ncontainer cp <source> <dest>\ncontainer stats [--no-stream] <id>\n```"
+      },
+      {
+        "title": "镜像管理命令",
+        "content": "```\ncontainer image list [--format json]\ncontainer image pull <image>\ncontainer image delete <reference>\ncontainer image build -t <tag> .\ncontainer image save --output <path> <image>\ncontainer image load --input <path>\ncontainer image tag <image> <new-tag>\ncontainer image push <image>\ncontainer registry login --username <user> --password-stdin <server>\ncontainer registry logout [server]\n```"
+      },
+      {
+        "title": "网络管理命令",
+        "content": "```\ncontainer network list\ncontainer network create <name> [--subnet <cidr>] [--internal]\ncontainer network delete <name>\ncontainer network inspect <name>\n```"
+      },
+      {
+        "title": "卷管理命令",
+        "content": "```\ncontainer volume list\ncontainer volume create <name> [-s <size>]\ncontainer volume delete <name>\ncontainer volume inspect <name>\ncontainer volume prune\n```"
+      },
+      {
+        "title": "系统管理命令",
+        "content": "```\ncontainer system status\ncontainer system start\ncontainer system stop\ncontainer system restart\ncontainer system dns list\ncontainer system dns create <domain> [--sudo]\ncontainer system dns delete <domain>\ncontainer info\n```"
+      }
+    ]
+  },
+  {
+    "name": "常见问题与故障排除",
+    "items": [
+      {
+        "title": "创建容器超时或卡死",
+        "content": "**原因**：镜像拉取慢或网络不通。\n**解决**：\n1. 确保已配置有效的镜像源（如 docker.1ms.run）。\n2. 手动使用完整镜像地址（如 docker.1ms.run/library/nginx:alpine）。\n3. 检查网络连接，必要时配置代理。"
+      },
+      {
+        "title": "镜像保存失败 (保存为 tar)",
+        "content": "**原因**：权限不足或路径问题。\n**解决**：\n1. 确保目标目录可写。\n2. 应用会自动保存到临时文件并移动到目标，如权限不足会弹出密码框。"
+      },
+      {
+        "title": "容器卷挂载无效",
+        "content": "**原因**：Apple Container 命名卷可能不稳定。\n**解决**：推荐使用绑定挂载（宿主机路径），如 `/tmp/data:/data`。"
+      },
+      {
+        "title": "无法连接到容器终端",
+        "content": "**原因**：容器未运行或 AppleScript 失败。\n**解决**：\n1. 确保容器处于运行状态。\n2. 手动执行 `container exec -it <id> sh` 测试。\n3. 应用备选方案会提示手动命令。"
+      },
+      {
+        "title": "重置所有设置后如何恢复",
+        "content": "重置会清除所有 UserDefaults，包括镜像源 URL、文档 URL、同步开关等。重置后应用会使用默认值（从 Info.plist 读取）。您需要重新配置镜像源和文档 URL。"
+      },
+      {
+        "title": "macOS 系统日志不显示",
+        "content": "**原因**：`/usr/bin/log` 命令权限或输出为空。\n**解决**：\n1. 确保应用有读取系统日志的权限（通常无需额外设置）。\n2. 调整时间范围：修改 `ContainerService.fetchMacOSSystemLogs` 中的 `--last` 参数。"
+      }
+    ]
+  }
+,
+  {
+    "name": "快速入门",
+    "items": [
+      {
+        "title": "下载与安装",
+        "content": "### 系统要求\n- macOS 26 (Tahoe) 或更高版本\n- Apple Silicon (M1/M2/M3) 或 Intel 处理器\n- 至少 4GB 可用内存\n\n### 安装步骤\n1. 从 GitHub Releases 下载最新安装包：\n   ```bash\n   curl -LO https://github.com/apple/container/releases/download/1.0.0/container-1.0.0-installer-signed.pkg\n   sudo installer -pkg container-1.0.0-installer-signed.pkg -target /\n   ```\n2. 启动 Apple Container 服务：\n   ```bash\n   container system start\n   ```\n3. 下载并运行 Aiguru Container Control Panel（ACCP）应用。\n\n### 首次启动\n- 应用启动后，点击左侧“系统”标签，确认服务状态为“运行中”。\n- 如需配置镜像加速器，请前往“镜像源”标签添加国内镜像源（如 docker.1ms.run）。"
+      },
+      {
+        "title": "应用概览",
+        "content": "ACCP 是一个 Apple Container 图形化管理工具，提供以下核心功能：\n\n- **容器管理**：创建、启动、停止、删除、编辑、日志查看、终端连接、统计监控、文件复制\n- **镜像管理**：拉取、删除、构建、导出/导入、打标签、推送、登录/登出仓库\n- **网络管理**：创建、删除、查看详情（含 JSON）\n- **卷管理**：创建、删除、清理、查看详情\n- **备份管理**：自动备份、恢复、删除\n- **系统管理**：服务控制、DNS 配置、系统信息\n- **日志查看**：操作日志、系统状态、容器日志、macOS 系统日志\n- **镜像源管理**：多镜像源增删改、连通性测试、远程同步\n- **文档中心**：动态加载在线文档（即本文档）\n- **状态栏菜单**：快速访问常用功能"
+      }
+    ]
+  },
+  {
+    "name": "操作大全",
+    "items": [
+      {
+        "title": "容器管理",
+        "content": "### 创建容器\n1. 点击“容器”标签的“+”按钮或状态栏菜单“创建容器”。\n2. 填写容器名称（可选），选择镜像（可从本地选择或手动输入）。\n3. 配置端口映射、环境变量、数据卷挂载等。\n4. 展开“高级设置”可配置网络、DNS、资源限制、Linux Capabilities 等。\n5. 点击“运行”创建容器。\n\n### 管理容器\n- **启动/停止/删除**：在容器详情页点击对应按钮。\n- **强制停止**：当容器无响应时，使用“强制停止”按钮（需确认）。\n- **查看日志**：点击“查看日志”弹出独立窗口，支持复制。\n- **终端连接**：点击“管理”打开系统终端，自动进入容器 Shell。\n- **统计监控**：点击“统计”查看 CPU、内存、网络 I/O 等实时数据。\n- **文件复制**：点击“复制文件”选择本地文件，指定容器内目标路径。\n- **编辑容器**：修改镜像标签、环境变量、卷挂载等（会重建容器）。\n\n### 容器列表\n- 支持按名称、镜像、IP、状态搜索。\n- 右键菜单可快速复制容器 ID。"
+      },
+      {
+        "title": "镜像管理",
+        "content": "### 拉取镜像\n1. 点击“镜像”标签的“拉取镜像”按钮。\n2. 输入仓库名称（如 nginx）和标签（如 latest）。\n3. 如果配置了镜像源，自动添加加速前缀。\n\n### 管理镜像\n- **删除**：选中镜像，点击“删除”按钮（需确认）。\n- **构建**：从 Dockerfile 构建镜像（需指定标签和路径）。\n- **导出为 tar**：保存镜像为 tar 文件。\n- **导入 tar**：从 tar 文件加载镜像。\n- **打标签**：为镜像添加新标签。\n- **推送**：将镜像推送到远程仓库（需先登录）。\n\n### 镜像仓库登录/登出\n- 点击工具栏“登录”按钮，输入服务器地址（如 docker.io）、用户名和密码。\n- 登出时确认即可。\n\n### 镜像列表\n- 支持按仓库、标签、ID 搜索。\n- 显示大小、架构等信息。"
+      },
+      {
+        "title": "网络管理",
+        "content": "### 创建网络\n1. 点击“网络”标签的“+”按钮。\n2. 输入网络名称，可设置子网（如 192.168.100.0/24）和内部模式。\n3. 点击“创建”。\n\n### 管理网络\n- **删除**：选中网络，点击“删除”按钮（需确认，默认网络不可删）。\n- **查看详情**：点击“详情”在右侧显示网络信息，包括 JSON 原始数据。\n- **搜索**：支持按网络名称搜索。"
+      },
+      {
+        "title": "卷管理",
+        "content": "### 创建卷\n1. 点击“卷管理”标签的“+”按钮。\n2. 输入卷名称，可设置大小（如 10G）。\n3. 点击“创建”。\n\n### 管理卷\n- **删除**：选中卷，点击“删除”按钮（需确认）。\n- **查看详情**：点击“详情”在右侧显示卷信息，包括源路径、大小、标签等。\n- **清理未使用卷**：一键删除所有未挂载的卷。\n- **搜索**：支持按卷名称搜索。"
+      },
+      {
+        "title": "备份管理",
+        "content": "### 自动备份\n- 编辑容器时自动备份旧容器（文件系统 + 配置）到 `~/Library/Application Support/Aiguru Container/Backups/`。\n\n### 管理备份\n- **查看**：在“备份管理”标签中列出所有备份，显示日期和大小。\n- **恢复**：右键或点击“恢复”按钮，输入新容器名称（可选），自动导入并创建容器。\n- **删除**：右键或点击“删除”按钮（需确认）。\n- **搜索**：支持按备份名称搜索。"
+      },
+      {
+        "title": "系统管理",
+        "content": "### 服务控制\n- 启动/停止/刷新 Apple Container 服务。\n- 显示服务状态和版本。\n\n### DNS 配置\n- 添加域名：输入域名（如 test），需管理员密码。\n- 删除域名：点击域名旁的减号（需确认，保留“DOMAIN”条目）。\n- 注入搜索域：添加 DNS 后，可选择注入到所有运行中的容器，使其可通过 `<容器名>.<域名>` 访问。\n\n### 系统信息\n- 右侧详情栏显示系统路径信息（安装目录、容器数据、卷、镜像、备份、配置文件等），支持复制和 Finder 打开。"
+      },
+      {
+        "title": "镜像源管理",
+        "content": "### 添加镜像源\n1. 点击“镜像源”标签的“+”按钮。\n2. 选择预设镜像源（如轩辕镜像、毫秒镜像等）或手动输入名称和地址。\n3. 点击“添加”。\n\n### 管理镜像源\n- **设为当前**：点击“设为当前”作为默认镜像源，拉取镜像时自动添加前缀。\n- **测试连通性**：点击“测试”检查镜像源是否可访问。\n- **编辑/删除**：修改名称或地址，或删除镜像源。\n- **同步 Docker 配置**：开关决定是否将镜像源写入 `~/.docker/daemon.json`。\n- **常用镜像源 URL**：可自定义远程 JSON 列表地址，点击刷新加载。"
+      },
+      {
+        "title": "日志查看",
+        "content": "### 操作日志\n- 记录所有用户操作（创建容器、拉取镜像等），支持类型、状态过滤和搜索。\n- 右键可复制单条日志，点击“清空日志”清空所有（需确认）。\n\n### 系统状态\n- 显示 `container system status` 输出，反映服务运行状态。\n\n### 容器日志\n- 显示所有容器（包括已停止）的日志，按容器分组，并标注运行状态。\n\n### macOS 系统日志\n- 显示宿主机的系统日志（`log show --last 10s --style syslog`），帮助排查系统问题。"
+      },
+      {
+        "title": "状态栏菜单",
+        "content": "点击菜单栏的 ACCP 图标，弹出控制面板：\n- **系统状态**：显示服务运行状态、容器数、镜像数。\n- **启动/停止服务**：快速控制 Apple Container 服务。\n- **创建容器/网络/卷**：快速打开创建表单。\n- **查看容器/镜像**：快速跳转到对应标签。\n- **查看日志**：跳转到日志标签。\n- **刷新状态**：手动刷新数据。\n- **退出应用**：退出 ACCP。"
+      }
+    ]
+  },
+  {
+    "name": "命令行参考",
+    "items": [
+      {
+        "title": "容器管理命令",
+        "content": "```\ncontainer list [--all] [--format json]\ncontainer start <id>\ncontainer stop <id>\ncontainer delete <id> [--force]\ncontainer logs <id>\ncontainer exec -it <id> sh\ncontainer create [options] <image>\ncontainer kill <id>\ncontainer export --output <path> <id>\ncontainer cp <source> <dest>\ncontainer stats [--no-stream] <id>\n```"
+      },
+      {
+        "title": "镜像管理命令",
+        "content": "```\ncontainer image list [--format json]\ncontainer image pull <image>\ncontainer image delete <reference>\ncontainer image build -t <tag> .\ncontainer image save --output <path> <image>\ncontainer image load --input <path>\ncontainer image tag <image> <new-tag>\ncontainer image push <image>\ncontainer registry login --username <user> --password-stdin <server>\ncontainer registry logout [server]\n```"
+      },
+      {
+        "title": "网络管理命令",
+        "content": "```\ncontainer network list\ncontainer network create <name> [--subnet <cidr>] [--internal]\ncontainer network delete <name>\ncontainer network inspect <name>\n```"
+      },
+      {
+        "title": "卷管理命令",
+        "content": "```\ncontainer volume list\ncontainer volume create <name> [-s <size>]\ncontainer volume delete <name>\ncontainer volume inspect <name>\ncontainer volume prune\n```"
+      },
+      {
+        "title": "系统管理命令",
+        "content": "```\ncontainer system status\ncontainer system start\ncontainer system stop\ncontainer system restart\ncontainer system dns list\ncontainer system dns create <domain> [--sudo]\ncontainer system dns delete <domain>\ncontainer info\n```"
+      }
+    ]
+  },
+  {
+    "name": "常见问题与故障排除",
+    "items": [
+      {
+        "title": "创建容器超时或卡死",
+        "content": "**原因**：镜像拉取慢或网络不通。\n**解决**：\n1. 确保已配置有效的镜像源（如 docker.1ms.run）。\n2. 手动使用完整镜像地址（如 docker.1ms.run/library/nginx:alpine）。\n3. 检查网络连接，必要时配置代理。"
+      },
+      {
+        "title": "镜像保存失败 (保存为 tar)",
+        "content": "**原因**：权限不足或路径问题。\n**解决**：\n1. 确保目标目录可写。\n2. 应用会自动保存到临时文件并移动到目标，如权限不足会弹出密码框。"
+      },
+      {
+        "title": "容器卷挂载无效",
+        "content": "**原因**：Apple Container 命名卷可能不稳定。\n**解决**：推荐使用绑定挂载（宿主机路径），如 `/tmp/data:/data`。"
+      },
+      {
+        "title": "无法连接到容器终端",
+        "content": "**原因**：容器未运行或 AppleScript 失败。\n**解决**：\n1. 确保容器处于运行状态。\n2. 手动执行 `container exec -it <id> sh` 测试。\n3. 应用备选方案会提示手动命令。"
+      },
+      {
+        "title": "重置所有设置后如何恢复",
+        "content": "重置会清除所有 UserDefaults，包括镜像源 URL、文档 URL、同步开关等。重置后应用会使用默认值（从 Info.plist 读取）。您需要重新配置镜像源和文档 URL。"
+      },
+      {
+        "title": "macOS 系统日志不显示",
+        "content": "**原因**：`/usr/bin/log` 命令权限或输出为空。\n**解决**：\n1. 确保应用有读取系统日志的权限（通常无需额外设置）。\n2. 调整时间范围：修改 `ContainerService.fetchMacOSSystemLogs` 中的 `--last` 参数。"
       }
     ]
   }
