@@ -2,9 +2,9 @@
     {
         "id": "cc.aiguru.systeminfo",
         "name": "SystemInfoPlugin 插件",
-        "version": "1.0",
+        "version": "1.0.0",
         "author": "Aiguru",
         "description": "一个简单的示例插件",
-        "downloadURL": "https://gitee.com/imccc_net/librarys/raw/master/main/plugins/SystemInfoPlugin.plugin"
+        "downloadURL": "https://gitee.com/imccc_net/librarys/raw/master/main/plugins/SystemInfoPlugin-1.0.0.tar.gz"
     }
 ]
