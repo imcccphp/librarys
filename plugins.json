@@ -1,0 +1,10 @@
+[
+    {
+        "id": "cc.aiguru.systeminfo",
+        "name": "systeminfo 插件",
+        "version": "1.0",
+        "author": "Aiguru",
+        "description": "一个简单的示例插件",
+        "downloadURL": "https://gitee.com/imccc_net/librarys/raw/master/main/plugins/cc.aiguru.systeminfo.plugin"
+    }
+]
