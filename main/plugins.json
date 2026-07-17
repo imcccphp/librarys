@@ -5,6 +5,16 @@
         "version": "1.0.0",
         "author": "Aiguru",
         "description": "一个简单的示例插件",
-        "downloadURL": "https://gitee.com/imccc_net/librarys/raw/master/main/plugins/SystemInfoPlugin.tar.gz"
+        "downloadURL": "https://gitee.com/imccc_net/librarys/raw/master/main/plugins/SystemInfoPlugin.tar.gz",
+        "iconName": "server.rack"
+    },
+    {
+        "id": "cc.aiguru.nginxmanager",
+        "name": "Nginx 站点管理",
+        "version": "1.0.0",
+        "author": "Aiguru",
+        "description": "多站点 Nginx 配置、SSL、反向代理与容器部署",
+        "downloadURL": "https://gitee.com/imccc_net/librarys/raw/master/main/plugins/NginxManagerPlugin-1.0.0.tar.gz",
+        "iconName": "server.rack"
     }
 ]
