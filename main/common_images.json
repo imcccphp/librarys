@@ -2,7 +2,7 @@
   {
     "name" : "Docker Hub",
     "url" : "https://docker.1ms.run",
-    "type" : "dockerhub",
+    "type" : "1ms",
     "entries" : [
       { "name" : "alpine", "tag" : "latest", "attribute" : "来自远程导入" },
       { "name" : "ubuntu", "tag" : "22.04", "attribute" : "来自远程导入" },
