@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Alpine",
+        "tag": "latest",
+        "displayName": "Alpine:latest",
+        "description": "轻量级 Linux 发行版",
+        "isRecommended": true,
+        "sourceURL": "https://alpinelinux.org"
+    },
+    {
+        "name": "Ubuntu",
+        "tag": "22.04",
+        "displayName": "Ubuntu:22.04",
+        "description": "Ubuntu 22.04 LTS Cloud 镜像",
+        "isRecommended": true,
+        "sourceURL": "https://ubuntu.com/download/cloud"
+    }
+]
