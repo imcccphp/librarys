@@ -1,26 +1,10 @@
 [
     {
-        "name": "网络监控",
-        "description": "实时显示容器网络流量与连接状态",
-        "version": "1.2.0",
-        "author": "container-team",
-        "source": "custom",
-        "repositoryURL": "https://github.com/container/net-monitor"
-    },
-    {
-        "name": "日志分析",
-        "description": "智能分析容器日志并配置告警规则",
-        "version": "2.0.1",
-        "author": "alice",
-        "source": "custom",
-        "repositoryURL": "https://github.com/alice/log-analyzer"
-    },
-    {
         "name": "资源看板",
         "description": "可视化 CPU / 内存 / 磁盘趋势图",
-        "version": "1.5.0",
-        "author": "bob",
+        "version": "1.0.0",
+        "author": "aiguru.cc",
         "source": "custom",
-        "repositoryURL": "https://github.com/bob/dashboard"
+        "repositoryURL": "https://gitee.com/imccc_net/librarys/tree/master/main/plugins/AcpSystemDetail-v1.0.0.tar.gz"
     }
 ]
