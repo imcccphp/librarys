@@ -1,20 +1,26 @@
 [
     {
-        "id": "cc.aiguru.systeminfo",
-        "name": "SystemInfoPlugin 插件",
-        "version": "1.0.0",
-        "author": "Aiguru",
-        "description": "一个简单的示例插件",
-        "downloadURL": "https://gitee.com/imccc_net/librarys/raw/master/main/plugins/SystemInfoPlugin.tar.gz",
-        "iconName": "server.rack"
+        "name": "网络监控",
+        "description": "实时显示容器网络流量与连接状态",
+        "version": "1.2.0",
+        "author": "container-team",
+        "source": "custom",
+        "repositoryURL": "https://github.com/container/net-monitor"
     },
     {
-        "id": "cc.aiguru.nginxmanager",
-        "name": "Nginx 站点管理",
-        "version": "1.0.0",
-        "author": "Aiguru",
-        "description": "多站点 Nginx 配置、SSL、反向代理与容器部署",
-        "downloadURL": "https://gitee.com/imccc_net/librarys/raw/master/main/plugins/NginxManagerPlugin-1.0.1.tar.gz",
-        "iconName": "server.rack"
+        "name": "日志分析",
+        "description": "智能分析容器日志并配置告警规则",
+        "version": "2.0.1",
+        "author": "alice",
+        "source": "custom",
+        "repositoryURL": "https://github.com/alice/log-analyzer"
+    },
+    {
+        "name": "资源看板",
+        "description": "可视化 CPU / 内存 / 磁盘趋势图",
+        "version": "1.5.0",
+        "author": "bob",
+        "source": "custom",
+        "repositoryURL": "https://github.com/bob/dashboard"
     }
 ]
