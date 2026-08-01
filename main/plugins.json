@@ -1,10 +1,10 @@
 [
     {
-        "name": "资源看板",
-        "description": "可视化 CPU / 内存 / 磁盘趋势图",
+        "name": "API客户端",
+        "description": "API客户端",
         "version": "1.0.0",
         "author": "aiguru.cc",
         "source": "custom",
-        "repositoryURL": "https://gitee.com/imccc_net/librarys/tree/master/main/plugins/AcpSystemDetail-v1.0.0.tar.gz"
+        "repositoryURL": "https://gitee.com/imccc_net/librarys/tree/master/main/plugins/AcpApiClientPlugin-v1.0.0.tar.gz"
     }
 ]
