@@ -26,9 +26,9 @@
         {
         "name": "Nginx 配置",
         "description": "Nginx 配置插件",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "author": "aiguru.cc",
         "source": "custom",
-        "repositoryURL": "https://gitee.com/imccc_net/librarys/tree/master/main/plugins/AcpNginxConfigPlugin-v1.0.0.tar.gz"
+        "repositoryURL": "https://gitee.com/imccc_net/librarys/tree/master/main/plugins/AcpNginxConfigPlugin-v1.0.1.tar.gz"
     }
 ]
