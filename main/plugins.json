@@ -1,7 +1,7 @@
 [
     {
         "name": "API客户端",
-        "description": "API客户端",
+        "description": "简易API客户端",
         "version": "1.0.0",
         "author": "aiguru.cc",
         "source": "custom",
@@ -9,7 +9,7 @@
     },
         {
         "name": "API模拟服务器",
-        "description": "API模拟服务器",
+        "description": "功能强大的API模拟服务器",
         "version": "1.0.0",
         "author": "aiguru.cc",
         "source": "custom",
